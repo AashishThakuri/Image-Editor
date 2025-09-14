@@ -45,6 +45,18 @@ const ImageEditor = () => {
   const [textBg, setTextBg] = useState(false); // BG off by default
   const [placedTexts, setPlacedTexts] = useState([]); // Array of placed text objects
   const [showBoxes, setShowBoxes] = useState(false); // preview region boxes overlay
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
+  // Parallax effect for background shapes
+  useEffect(() => {
+    const onMove = (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 60; // Final increase to motion range
+      const y = (e.clientY / window.innerHeight - 0.5) * 60;
+      setParallax({ x, y });
+    };
+    window.addEventListener('mousemove', onMove);
+    return () => window.removeEventListener('mousemove', onMove);
+  }, []);
 
   // Init 2D context
   useEffect(() => {
@@ -499,6 +511,70 @@ const ImageEditor = () => {
         `
       }}
     >
+            {/* Animated retro background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          className="absolute -top-20 -left-20 w-72 h-72 rounded-full"
+          style={{ background: '#F8D5C7', border: '4px solid #1A1A1A', opacity: 0.2 }}
+          animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
+          transition={{ duration: 30, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full"
+          style={{ background: '#F3E2D3', border: '4px solid #1A1A1A', opacity: 0.15 }}
+          animate={{ scale: [1, 1.03, 1], rotate: [0, -5, 0] }}
+          transition={{ duration: 40, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute top-1/4 -right-12 w-48 h-32 rounded-[2rem]"
+          style={{ background: '#F7C9B9', border: '4px solid #1A1A1A', opacity: 0.18 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 20, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        />
+      </div>
+      {/* Heavily Artistic Background Elements v3 */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Large floating shapes with increased parallax */}
+        <motion.div
+          className="absolute top-[5%] left-[8%] w-64 h-64 rounded-full"
+          style={{ background: '#F8D5C7', border: '4px solid #1A1A1A', opacity: 0.25, boxShadow: '12px 12px 0 #1A1A1A' }}
+          animate={{ x: parallax.x * 0.8, y: parallax.y * 1.2, rotate: -12 }}
+          transition={{ type: 'spring', stiffness: 25, damping: 20 }}
+        />
+        <motion.div
+          className="absolute bottom-[8%] right-[10%] w-80 h-80"
+          style={{ background: '#F3E2D3', border: '4px solid #1A1A1A', opacity: 0.2, clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)' }}
+          animate={{ x: parallax.x * -1.1, y: parallax.y * 0.7, rotate: 18 }}
+          transition={{ type: 'spring', stiffness: 25, damping: 20 }}
+        />
+
+        {/* Small, edit-related decorative elements */}
+        <motion.svg className="absolute top-[15%] right-[18%] w-10 h-10 text-black/20" animate={{ x: parallax.x * 0.4, y: parallax.y * 0.6, rotate: 45 }} transition={{ type: 'spring', stiffness: 70, damping: 20 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><path d="M11 13a1 1 0 100-2 1 1 0 000 2z"/></motion.svg>
+        <motion.div className="absolute bottom-[20%] left-[12%] w-12 h-12 border-2 border-black/25 rounded-full flex items-center justify-center" animate={{ x: parallax.x * 1.4, y: parallax.y * -1.1 }} transition={{ type: 'spring', stiffness: 70, damping: 20 }}><div className="w-4 h-4 bg-black/25 rounded-full"/></motion.div>
+        <motion.div className="absolute top-[85%] right-[45%] w-5 h-5 bg-black/25 rounded-full" animate={{ x: parallax.x * -1.5, y: parallax.y * 0.4 }} transition={{ type: 'spring', stiffness: 70, damping: 20 }} />
+        <motion.div className="absolute top-[30%] left-[25%] w-4 h-4 bg-black/20 rounded-full" animate={{ x: parallax.x * 0.6, y: parallax.y * -0.6 }} transition={{ type: 'spring', stiffness: 70, damping: 20 }} />
+        <motion.div className="absolute top-[60%] right-[30%] w-6 h-6 border-2 border-black/20" animate={{ x: parallax.x * -0.8, y: parallax.y * 1.4, rotate: -35 }} transition={{ type: 'spring', stiffness: 70, damping: 20 }} />
+        <motion.svg className="absolute bottom-[35%] right-[25%] w-12 h-12 text-black/20" animate={{ x: parallax.x * -0.5, y: parallax.y * 0.9 }} transition={{ type: 'spring', stiffness: 70, damping: 20 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></motion.svg>
+
+        {/* Squiggle lines and grids */}
+        <motion.svg
+          className="absolute top-[50%] left-[15%] w-56 h-56 opacity-20"
+          animate={{ x: parallax.x * 0.6, y: parallax.y * -0.9 }}
+          transition={{ type: 'spring', stiffness: 40, damping: 20 }}
+          viewBox="0 0 100 100" fill="none"
+        >
+          <path d="M0 50 H 100 M50 0 V 100" stroke="#1A1A1A" strokeWidth="2" />
+          <circle cx="50" cy="50" r="35" stroke="#1A1A1A" strokeWidth="2" />
+        </motion.svg>
+        <motion.svg className="absolute bottom-[10%] left-[40%] w-24 h-24 text-black/20" animate={{ x: parallax.x * -0.6, y: parallax.y * 1.1, rotate: -20 }} transition={{ type: 'spring', stiffness: 50, damping: 20 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6.13 1L6 16a2 2 0 0 0 2 2h15"/><path d="M1 6.13L16 6a2 2 0 0 1 2 2v15"/></motion.svg>
+        
+        {/* Central dashed circle (subtle) */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border-2 border-dashed border-black/10 rounded-full"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 180, repeat: Infinity, ease: 'linear' }}
+        />
+      </div>
       <main className="min-h-screen flex flex-col items-center justify-start px-4 pt-24 pb-12 z-10 relative">
         <div className="w-full max-w-5xl mx-auto text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-black mb-2 font-heading">Edit Images with Precision</h2>
@@ -706,10 +782,42 @@ const ImageEditor = () => {
             <div className="mt-6">
               <AnimatePresence mode="wait">
                 {isGenerating && (
-                  <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center">
-                    <PuzzleLoader />
-                  </motion.div>
-                )}
+                  <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full flex flex-col items-center justify-center text-center my-8">
+                    <motion.svg
+                      width="80"
+                      height="80"
+                      viewBox="0 0 80 80"
+                      initial="start"
+                      animate="end"
+                      className="text-black/50"
+                    >
+                      <motion.circle
+                        cx="40"
+                        cy="40"
+                        r="35"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        fill="none"
+                        strokeDasharray="10 15"
+                        variants={{
+                          start: { rotate: 0 },
+                          end: { rotate: 360 },
+                        }}
+                        transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                      />
+                      <motion.path
+                        d="M40 20 L50 35 L60 40 L50 45 L40 60 L30 45 L20 40 L30 35 Z"
+                        fill="currentColor"
+                        variants={{
+                          start: { scale: 0.8, opacity: 0.7 },
+                          end: { scale: 1.1, opacity: 1 },
+                        }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+                      />
+                    </motion.svg>
+                    <p className="mt-6 text-lg font-semibold tracking-wider">Eikona is creating...</p>
+                    <p className="text-sm opacity-70">This can take up to 30 seconds.</p>
+                  </motion.div>)}
                 {resultUrls.length > 0 && (
                   <motion.div key="images" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} className="w-full">
                     <h4 className="text-lg font-semibold mb-3">Your Images</h4>
