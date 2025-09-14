@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-color: rgb(229 231 235);
+}
+
+body {
+  /* Fallback color and layered gradients to match landing page */
+  background-color: #F3DECF;
+  background-image:
+    radial-gradient(900px 560px at -10% -10%, #F9D7C9 0%, rgba(249,215,201,0) 60%),
+    radial-gradient(800px 520px at 110% 10%, #F4E2CE 0%, rgba(244,226,206,0) 55%),
+    linear-gradient(180deg, #F7ECE3 0%, #F3DECF 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* Include Devanagari-capable fonts by default so Nepali text shapes correctly */
+  font-family: 'Inter', 'Noto Sans Devanagari', 'Noto Serif Devanagari', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Shared gradient to avoid flashes between route transitions */
+.app-gradient {
+  background-color: #F3DECF;
+  background-image:
+    radial-gradient(900px 560px at -10% -10%, #F9D7C9 0%, rgba(249,215,201,0) 60%),
+    radial-gradient(800px 520px at 110% 10%, #F4E2CE 0%, rgba(244,226,206,0) 55%),
+    linear-gradient(180deg, #F7ECE3 0%, #F3DECF 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Floating geometric animations */
+.floating-circle {
+  animation: float-gentle 8s ease-in-out infinite;
+}
+
+.floating-triangle {
+  animation: float-rotate 12s ease-in-out infinite;
+}
+
+.floating-square {
+  animation: float-bounce 10s ease-in-out infinite;
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px);
+  }
+}
+
+@keyframes float-rotate {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-25px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(-15px) rotate(240deg);
+  }
+}
+
+@keyframes float-bounce {
+  0%, 100% {
+    transform: translateY(0px) rotate(45deg) scale(1);
+  }
+  50% {
+    transform: translateY(-40px) rotate(45deg) scale(1.1);
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(to right, rgb(245 149 50), rgb(228 92 0));
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+  transform: scale(1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, rgb(228 92 0), rgb(189 69 2));
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background: linear-gradient(to right, rgb(236 72 153), rgb(219 39 119));
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+  transform: scale(1);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(to right, rgb(219 39 119), rgb(190 24 93));
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: scale(1.05);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, rgb(228 92 0), rgb(219 39 119));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.floating-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+}
+
+.glow-effect {
+  box-shadow: 0 0 20px rgba(245, 149, 50, 0.3);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Explicit utility to force Devanagari rendering where needed */
+.font-devanagari {
+  font-family: 'Noto Sans Devanagari', 'Noto Serif Devanagari', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: 0.01em;
+}
+
+/* Any element marked with lang="ne" will prefer Devanagari fonts */
+[lang="ne"] {
+  font-family: 'Noto Sans Devanagari', 'Noto Serif Devanagari', 'Inter', system-ui, sans-serif;
+}
+
+/* Prevent a typing caret from showing on non-editable content (e.g., when browser Caret Browsing is on). 
+   Allow caret only where typing is expected. */
+body, body * {
+  caret-color: transparent;
+}
+input, textarea, [contenteditable="true"], .allow-caret {
+  caret-color: auto;
+}
