@@ -1,175 +1,122 @@
-# Veo AI Platform
+# Eikona
 
-A beautiful, user-friendly text-to-video AI platform built with React, Vite, and Google's Veo API. Transform your text descriptions into stunning videos with the power of artificial intelligence.
+A modern, powerful, and user-friendly AI image generation and editing platform. Built with React, Vite, and Google's Gemini API, Eikona transforms your text descriptions into stunning, high-quality images and provides advanced tools to edit them with precision.
 
-## ✨ Features
+## ◆ Core Features
 
-- **🎬 Text-to-Video Generation**: Convert text descriptions into high-quality videos using Google's Veo AI
-- **🔐 Google OAuth Authentication**: Secure sign-in with Google accounts
-- **💳 Subscription Management**: Flexible SaaS pricing with Free, Pro, and Premium plans
-- **🎨 Beautiful UI/UX**: Modern design with smooth animations and transitions
-- **📱 Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
-- **⚡ Fast Performance**: Built with Vite for lightning-fast development and production builds
+- **Text-to-Image Generation**: Convert text descriptions into high-resolution images using Google's Gemini AI.
+- **Advanced Image Editor**: A full-featured, layer-based editor to manually or automatically edit images. Add text, remove objects with a clone stamp, or use AI to edit specific regions.
+- **Secure Authentication**: Simple and secure sign-in with Google OAuth.
+- **Sleek UI/UX**: A beautiful, retro-inspired design with smooth animations and an intuitive user experience.
+- **Fully Responsive**: Works seamlessly on desktop, tablet, and mobile devices.
+- **Blazing Fast**: Built with Vite for a lightning-fast development workflow and optimized production builds.
 
-## 🚀 Getting Started
+## → Getting Started
 
 ### Prerequisites
 
-- Node.js 16+ 
-- npm or yarn
-- Google OAuth credentials
-- Google Veo API access (when available)
+- Node.js v18+
+- `npm` or `yarn`
+- A Google Cloud project with OAuth credentials enabled.
+- A Google Gemini API key.
 
-### Installation
+### Installation & Setup
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd veo-ai-platform
-   ```
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/AashishThakuri/Image-Editor.git
+    cd Image-Editor
+    ```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Edit `.env` and add your credentials:
-   ```env
-   VITE_GOOGLE_CLIENT_ID=your_google_client_id_here
-   VITE_VEO_API_KEY=your_veo_api_key_here
-   ```
+3.  **Set Up Environment Variables**
+    Create a `.env` file by copying the example:
+    ```bash
+    cp .env.example .env
+    ```
+    
+    Open the `.env` file and add your credentials. You can get these from the Google Cloud Console and Google AI Studio.
+    ```env
+    VITE_GOOGLE_CLIENT_ID=your-google-client-id-here
+    VITE_GEMINI_API_KEY=your-gemini-api-key-here
+    ```
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+4.  **Run the Development Server**
+    ```bash
+    npm run dev
+    ```
 
-5. **Open your browser**
-   Navigate to `http://localhost:3000`
+5.  **Open in Browser**
+    Navigate to `http://localhost:3000` to see the app in action.
 
-## 🏗️ Project Structure
+## → Project Structure
 
 ```
 src/
-├── components/          # Reusable UI components
-│   ├── GoogleSignInButton.jsx
-│   ├── LoadingSpinner.jsx
-│   └── ProtectedRoute.jsx
-├── contexts/           # React contexts
-│   └── AuthContext.jsx
-├── pages/              # Main application pages
-│   ├── LandingPage.jsx
-│   ├── Dashboard.jsx
-│   ├── VideoGenerator.jsx
-│   └── Profile.jsx
-├── App.jsx            # Main app component
-├── main.jsx           # Application entry point
-└── index.css          # Global styles
+├── components/       # Reusable UI components (Buttons, Modals, Layouts)
+├── contexts/         # React Context for global state (e.g., AuthContext)
+├── lib/              # API clients and helper functions (Firebase, Gemini)
+├── pages/            # Top-level page components (Landing, ImageGenerator)
+├── App.jsx           # Main app component with routing
+├── main.jsx          # Application entry point
+└── index.css         # Global styles & TailwindCSS imports
 ```
 
-## 🎨 Design System
+## → Configuration
 
-The application uses a warm, inviting color palette inspired by modern design trends:
+### Google Gemini API
 
-- **Primary Colors**: Orange gradient (#f59532 to #e45c00)
-- **Secondary Colors**: Pink gradient (#ec4899 to #db2777)
-- **Accent Colors**: Green gradient (#22c55e to #16a34a)
-- **Warm Colors**: Yellow gradient (#fbbf24 to #d97706)
+1.  Visit [Google AI Studio](https://aistudio.google.com/) to get your API key.
+2.  Ensure the Generative Language API is enabled in your Google Cloud project.
+3.  Add the API key to your `.env` file as `VITE_GEMINI_API_KEY`.
 
-## 🔧 Configuration
-
-### Google OAuth Setup
-
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select an existing one
-3. Enable the Google+ API
-4. Create OAuth 2.0 credentials
-5. Add your domain to authorized origins
-6. Copy the client ID to your `.env` file
-
-### Google Veo API Setup
-
-1. Request access to Google's Veo API (currently in limited preview)
-2. Obtain your API key
-3. Add the API key to your `.env` file
-
-## 📱 Features Overview
+## → Features Overview
 
 ### Landing Page
-- Hero section with animated elements
-- Feature showcase
-- User testimonials
-- Pricing information
-- Google sign-in integration
+- A beautifully animated hero section.
+- Detailed feature showcase and user testimonials.
+- Seamless Google sign-in integration.
 
-### Dashboard
-- User statistics and plan information
-- Quick action buttons
-- Recent video gallery
-- Usage tracking
+### Dashboard & Image Generator
+- A central hub for creating and managing your images.
+- An intuitive prompt bar with suggestions and reference image uploads.
+- A gallery to view, download, or edit your generated images.
 
-### Video Generator
-- Text prompt input with suggestions
-- Video customization options (duration, style, aspect ratio)
-- Real-time generation progress
-- Video preview and download
+### Image Editor
+- A powerful, layer-based editor for non-destructive changes.
+- **Manual Tools**: Brush, Eraser, Text, Eyedropper, and a Clone Stamp for seamless object removal.
+- **AI-Powered Editing**: Select regions of an image and use a text prompt to add, remove, or modify objects within that area.
 
-### Profile Management
-- User information display
-- Subscription plan management
-- Billing history
-- Account settings
+## → Deployment
 
-## 🚀 Deployment
+This project is optimized for deployment on platforms like Vercel or Netlify.
 
 ### Build for Production
 
 ```bash
 npm run build
 ```
+This command creates a `dist/` folder with your optimized production assets.
 
-### Deploy to Netlify/Vercel
+### Deploying with Vercel
 
-The application is ready for deployment to modern hosting platforms:
+1.  Install the Vercel CLI: `npm i -g vercel`
+2.  Run `vercel` in the project root and follow the prompts to link and deploy the project.
+3.  Add your environment variables from `.env` to the Vercel project settings.
 
-1. **Netlify**: Connect your repository and deploy automatically
-2. **Vercel**: Import your project and deploy with zero configuration
-3. **Traditional hosting**: Upload the `dist` folder contents
+## → Future Roadmap
 
-## 🔮 Future Enhancements
+- **Advanced Brush Tools**: More sophisticated brushes for detailed artistic work.
+- **Font & Text Styling**: Add options for fonts, outlines, and shadows in the text tool.
+- **Image Upscaling**: Integrate an AI model to increase the resolution of generated images.
+- **Community Gallery**: A space for users to share their creations.
 
-- **Video Templates**: Pre-designed video templates for common use cases
-- **Advanced Editing**: Timeline-based video editing capabilities
-- **Team Collaboration**: Multi-user workspaces and sharing
-- **API Integration**: RESTful API for third-party integrations
-- **Analytics Dashboard**: Detailed usage and performance metrics
-- **Mobile App**: Native iOS and Android applications
+## → Acknowledgments
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Google for the Veo AI technology
-- React team for the amazing framework
-- Tailwind CSS for the utility-first styling
-- Framer Motion for smooth animations
-- Lucide React for beautiful icons
-
----
-
-**Built with ❤️ using React, Vite, and modern web technologies**
+- **Google** for the powerful Gemini AI technology.
+- The **React** and **Vite** teams for their incredible open-source tools.
+- **Tailwind CSS**, **Framer Motion**, and **Lucide React** for making the UI beautiful and functional.
