@@ -307,7 +307,7 @@ const LandingPage = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <span className="font-script text-5xl">K</span><span className="-ml-1">atha AI</span>
+                    <span className="font-script text-5xl">E</span><span className="-ml-1">ikona</span>
                   </motion.h1>
                 </div>
               </div>
@@ -399,7 +399,7 @@ const LandingPage = () => {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-2">
                     <FeatherIcon className="h-8 w-8 -mr-1" />
-                    <span className="text-xl font-bold"><span className="font-script text-3xl">K</span>atha AI</span>
+                    <span className="text-xl font-bold"><span className="font-script text-3xl">E</span>ikona</span>
                   </div>
                   <button
                     className="inline-flex items-center justify-center w-10 h-10 rounded-full"
@@ -691,7 +691,7 @@ const LandingPage = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <span className="font-script text-5xl">K</span><span className="-ml-1">atha AI</span>
+                  <span className="font-script text-4xl">E</span><span className="-ml-1">ikona</span>
                 </motion.h2>
               </div>
               <p className="text-sm">Create Videos & Images in a Single Prompt.</p>
@@ -720,7 +720,7 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm" style={{ borderTop: '4px solid #1A1A1A' }}>
-            <p>&copy; {new Date().getFullYear()} Katha AI. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Eikona. All rights reserved.</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <a href="https://x.com/Lyrical62785503" target="_blank" rel="noopener noreferrer" className="hover:opacity-80"><Twitter size={20} /></a>
               <a href="https://www.instagram.com/aashish_thakuri7?igsh=ZzQwbWtwd3p6cjRn&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:opacity-80"><Instagram size={20} /></a>
