@@ -64,19 +64,19 @@ const LandingPage = () => {
 
   const features = [
     {
-      icon: <Clapperboard className="w-8 h-8" />,
-      title: 'Text → Video',
-      description: 'Create cinematic videos with authentic Nepali dialogue, stunning scenes, and natural motion.'
-    },
-    {
       icon: <ImageIcon className="w-8 h-8" />,
-      title: 'Text → Image',
-      description: 'Generate beautiful high-resolution images from a single prompt or your references.'
+      title: 'Text to Image',
+      description: 'Generate beautiful, high-resolution images from a single prompt or your own references.'
     },
     {
       icon: <Wand2 className="w-8 h-8" />,
-      title: 'Edit & Place Anything',
-      description: 'Add, replace, or move objects and text in any image with precise region boxes and masks.'
+      title: 'AI-Powered Editing',
+      description: 'Add, replace, or move objects in any image with precise region masks and instructions.'
+    },
+    {
+      icon: <FeatherIcon className="w-8 h-8" />,
+      title: 'Authentic Nepali Text',
+      description: 'Typeset beautiful, culturally authentic Nepali text onto your images for local creators.'
     }
   ]
 
@@ -451,8 +451,8 @@ const LandingPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  Create Videos & Images
-                  <span className="block">Edit Anything in a Single Prompt</span>
+                  Create & Edit Images
+                  <span className="block">with a Single Prompt</span>
                 </motion.h1>
                 
                 <motion.p 
@@ -461,7 +461,7 @@ const LandingPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  Generate videos and images, and make smart edits to any picture. Place objects, swap items, and typeset Nepali text precisely—all with one prompt.
+                  Generate stunning images and make smart edits to any picture. Place objects, swap items, and typeset Nepali text precisely—all with one prompt.
                 </motion.p>
                 
                 <motion.div 
@@ -490,7 +490,7 @@ const LandingPage = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  {['Ad Creatives', 'Travel Vlogs', 'Education', 'E‑commerce', 'Music Visualizer', 'Posters'].map((item, idx) => (
+                  {['Ad Creatives', 'Product Shots', 'Education', 'E‑commerce', 'Social Media', 'Posters'].map((item, idx) => (
                     <motion.li
                       key={item}
                       animate={{ y: [0, -2, 0] }}
@@ -529,7 +529,7 @@ const LandingPage = () => {
                     </div>
                     <div className="flex items-center space-x-3">
                       <motion.div className="w-4 h-4 rounded-full" style={{ background: '#F4A460', border: '2px solid #1A1A1A' }} animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }} />
-                      <span>Generating images and video scenes...</span>
+                      <span>Generating image assets...</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <motion.div className="w-4 h-4 rounded-full" style={{ background: '#F08080', border: '2px solid #1A1A1A' }} animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }} />
@@ -557,10 +557,10 @@ const LandingPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-black mb-4 font-heading">
-              All‑in‑One: Video, Image, Edit
+              All‑in‑One: Image Generation & Editing
             </h2>
             <p className="text-xl max-w-3xl mx-auto font-body">
-              Generate videos and images, then edit any photo with precise object placement and Nepali typesetting—built for creators in Nepal.
+              Generate images, then edit any photo with precise object placement and Nepali typesetting—built for creators in Nepal.
             </p>
           </motion.div>
           
@@ -655,10 +655,10 @@ const LandingPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-black mb-6 font-heading">
-              Start Creating Videos, Images & Edits
+              Start Creating Images & Edits
             </h2>
             <p className="text-xl mb-8 font-body">
-              Sign in with Google to generate videos and images, and make photorealistic edits with precise control. Get 3 free generations on us!
+              Sign in with Google to generate images and make photorealistic edits with precise control. Get 3 free generations on us!
             </p>
           </motion.div>
         </div>
